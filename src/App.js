@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import { BrowserRouter, redirect, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
+import Main from './component/pages/Main';
+import Search from './component/pages/Search';
+import Details from './component/pages/Details';
+// import ShopTest from './component/ShopTest';
 
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <h2> Fullstack mid project </h2><hr/>
+      <Routes>
+        <Route path="/" element={<Main />}></Route>
+        <Route path="/specifics/:search" element={<Search />}></Route>
+        <Route path="/details/:title" element={<Details />}></Route>
+        {/* <Route path="/shoptest" element={<ShopTest />}></Route> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
