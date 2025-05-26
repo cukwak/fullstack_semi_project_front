@@ -1,14 +1,12 @@
-
-
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Navbar from 'react-bootstrap/Navbar';
 import Row from 'react-bootstrap/Row';
-import Modal from '../ui/UseModal';
+import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
+import Modal from '../ui/UseModal';
 
 function Header(props) {
   const navigate = useNavigate();
@@ -120,44 +118,60 @@ function Header(props) {
   return (
     <>
       {!isLoggedIn ? (
-        <Navbar className="bg-body-tertiary justify-content-between" >
-          <Form inline>
-            <Button variant="primary" onClick={loginShow}>Login</Button> &nbsp;
-            <Button variant="primary" onClick={regiShow}>Register</Button>
-          </Form>
-          <Form inline onSubmit={handleSearchSubmit}>
-            <Row>
-              <Col xs="auto">
-                <Form.Control
-                  type="text"
-                  placeholder="Search"
-                  className="mr-sm-2"
-                  value={search}
-                  onChange={searchHandler}
-                />
-              </Col>
-            </Row>
-          </Form>
+        <Navbar className="bg-body-tertiary" expand="lg">
+          <div className="container-fluid">
+            <div className="d-flex align-items-center">
+              <Form inline className="me-3">
+                <Button variant="primary" onClick={loginShow}>Login</Button> &nbsp;
+                <Button variant="primary" onClick={regiShow}>Register</Button>
+              </Form>
+            </div>
+            <Form inline onSubmit={handleSearchSubmit} className="ms-auto">
+              <Row className="g-2">
+                <Col xs="auto">
+                  <Form.Control
+                    type="text"
+                    placeholder="Search"
+                    className="mr-sm-2"
+                    value={search}
+                    onChange={searchHandler}
+                    style={{ maxWidth: '200px' }}
+                  />
+                </Col>
+                <Col xs="auto">
+                  <Button type="submit" variant="primary">검색</Button>
+                </Col>
+              </Row>
+            </Form>
+          </div>
         </Navbar>
       ) : (
-        <Navbar className="bg-body-tertiary justify-content-between">
-          <Form inline>
-            <Button variant="primary" onClick={logoutProc}>Logout</Button> &nbsp;
-            {username}
-          </Form>
-          <Form inline onSubmit={handleSearchSubmit}>
-            <Row>
-              <Col xs="auto">
-                <Form.Control
-                  type="text"
-                  placeholder="Search"
-                  className="mr-sm-2"
-                  value={search}
-                  onChange={searchHandler}
-                />
-              </Col>
-            </Row>
-          </Form>
+        <Navbar className="bg-body-tertiary" expand="lg">
+          <div className="container-fluid">
+            <div className="d-flex align-items-center">
+              <Form inline className="me-3">
+                <Button variant="primary" onClick={logoutProc}>Logout</Button> &nbsp;
+                <span className="ms-2">{username}</span>
+              </Form>
+            </div>
+            <Form inline onSubmit={handleSearchSubmit} className="ms-auto">
+              <Row className="g-2">
+                <Col xs="auto">
+                  <Form.Control
+                    type="text"
+                    placeholder="Search"
+                    className="mr-sm-2"
+                    value={search}
+                    onChange={searchHandler}
+                    style={{ maxWidth: '200px' }}
+                  />
+                </Col>
+                <Col xs="auto">
+                  <Button type="submit" variant="primary">검색</Button>
+                </Col>
+              </Row>
+            </Form>
+          </div>
         </Navbar>
       )}
 

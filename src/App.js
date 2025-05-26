@@ -3,6 +3,7 @@ import './App.css';
 import Main from './component/pages/Main';
 import Search from './component/pages/Search';
 import Details from './component/pages/Details';
+import TestComponent from './component/pages/TestComponent';
 // import ShopTest from './component/ShopTest';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Main />}></Route>
         <Route path="/specifics/:search" element={<Search />}></Route>
         <Route path="/details/:title" element={<Details />}></Route>
+        <Route path="/test" element={<TestComponent />}></Route>
         {/* <Route path="/shoptest" element={<ShopTest />}></Route> */}
       </Routes>
     </BrowserRouter>
